@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Thoughts</title>
+</head>
+<body>
+    <h1>Submitted Thoughts:</h1>
+    <p id="displayThought"></p>
+    
+    <script>
+        document.getElementById("displayThought").textContent = localStorage.getItem("userThought") || "No thoughts submitted yet!";
+    </script>
+</body>
+</html>
