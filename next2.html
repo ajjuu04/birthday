@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday 🎉</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Enable scrolling */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        /* Title centered */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 20vh;
+            width: 100%;
+        }
+
+        .title {
+            font-size: 5vw;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff6f61;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #fff, 0 0 20px #ff6f61; }
+            100% { text-shadow: 0 0 20px #fff, 0 0 40px #ff6f61; }
+        }
+
+        /* Video Container */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 10px;
+        }
+
+        /* Video Styling */
+        video {
+            width: 90%;
+            max-width: 350px;
+            height: auto;
+            max-height: 70vh;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Desktop View (Side by Side) */
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+            video {
+                width: 45%;
+            }
+        }
+
+        /* Mobile View (One Below Another) */
+        @media (max-width: 767px) {
+            .container {
+                flex-direction: column;
+            }
+            video {
+                width: 90%;
+            }
+        }
+
+        /* Confetti */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Next Button Styling */
+        .next-button {
+            position: relative;
+            display: block;
+            margin: 20px auto; /* Centered */
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: #ff6f61;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .next-button:hover {
+            background: #ff4d4d;
+            transform: scale(1.05);
+        }
+
+        /* Stick to the bottom */
+        .button-container {
+            width: 100%;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Title Centered -->
+    <div class="wrapper">
+        <div class="title">🎉 Happy Birthday! 🎂</div>
+    </div>
+
+    <!-- Videos Start Below -->
+    <div class="container">
+        <video autoplay muted loop playsinline>
+            <source src="p1.mp4" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline>
+            <source src="v0.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Next Page Button -->
+    <div class="button-container">
+        <button class="next-button" onclick="nextPage()">Next Page →</button>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "next3.html"; // Redirects to next3.html
+        }
+
+        gsap.from(".title", { duration: 2, opacity: 0, y: -50, ease: "bounce.out" });
+
+        const confettiSettings = { target: 'confetti-canvas', max: 100, size: 1.2, animate: true, clock: 30 };
+        const confetti = new ConfettiGenerator(confettiSettings);
+        confetti.render();
+    </script>
+</body>
+</html>
